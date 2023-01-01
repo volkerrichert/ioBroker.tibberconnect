@@ -111,6 +111,21 @@ export class TibberAPICaller extends TibberHelper {
 					"",
 					"The last end for calculation",
 				),
+				this.checkAndSetValueBooleanAsButton(
+					this.getStatePrefix(this.currentHomeId, "Calculations", "GetExtrem"),
+					false,
+					"Start calculate high and low",
+				),
+				this.checkAndSetValue(
+					this.getStatePrefix(this.currentHomeId, "Calculations", "Highs"),
+					"",
+					"calculated Highs",
+				),
+				this.checkAndSetValue(
+					this.getStatePrefix(this.currentHomeId, "Calculations", "Lows"),
+					"",
+					"calculated Lows",
+				),
 			]);
 
 			this.fetchAddress("Address", currentHome.address);
@@ -121,7 +136,7 @@ export class TibberAPICaller extends TibberHelper {
 			// TO DO: currentHome.consumption
 			// TO DO: currentHome.production
 
-			this.checkAndSetValueBoolean(
+			await this.checkAndSetValueBoolean(
 				this.getStatePrefix(this.currentHomeId, "Features", "RealTimeConsumptionEnabled"),
 				currentHome.features.realTimeConsumptionEnabled,
 			);
