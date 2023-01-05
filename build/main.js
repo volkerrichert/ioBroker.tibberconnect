@@ -280,17 +280,7 @@ class Tibberconnect extends utils.Adapter {
         var _a;
         const nameSpaceWithHomeId = id.substring(0, id.indexOf(".Calculations.GetExtrem"));
         try {
-            const [LastEnd] = await Promise.all([
-                this.getStateAsync(nameSpaceWithHomeId + ".Calculations.LastEnd"),
-                this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Highs", {
-                    val: "",
-                    ack: true,
-                }),
-                this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Lows", {
-                    val: "",
-                    ack: true,
-                }),
-            ]);
+            const [LastEnd] = await Promise.all([this.getStateAsync(nameSpaceWithHomeId + ".Calculations.LastEnd")]);
             const lastEnd = (_a = String(LastEnd === null || LastEnd === void 0 ? void 0 : LastEnd.val)) !== null && _a !== void 0 ? _a : "", result = await this.get_extrem_values(nameSpaceWithHomeId, lastEnd);
             this.log.debug("LastEnd: " + lastEnd + ", result: " + JSON.stringify(result));
             await Promise.all([
@@ -298,12 +288,8 @@ class Tibberconnect extends utils.Adapter {
                     val: luxon_1.DateTime.fromISO(lastEnd).toISO(),
                     ack: true,
                 }),
-                this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Highs", {
-                    val: JSON.stringify(result.highs),
-                    ack: true,
-                }),
-                this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Lows", {
-                    val: JSON.stringify(result.lows),
+                this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Feedback", {
+                    val: JSON.stringify(result),
                     ack: true,
                 }),
             ]);

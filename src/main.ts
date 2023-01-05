@@ -265,17 +265,7 @@ class Tibberconnect extends utils.Adapter {
 		const nameSpaceWithHomeId = id.substring(0, id.indexOf(".Calculations.GetExtrem"));
 
 		try {
-			const [LastEnd] = await Promise.all([
-				this.getStateAsync(nameSpaceWithHomeId + ".Calculations.LastEnd"),
-				this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Highs", {
-					val: "",
-					ack: true,
-				}),
-				this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Lows", {
-					val: "",
-					ack: true,
-				}),
-			]);
+			const [LastEnd] = await Promise.all([this.getStateAsync(nameSpaceWithHomeId + ".Calculations.LastEnd")]);
 
 			const lastEnd = String(LastEnd?.val) ?? "",
 				result = await this.get_extrem_values(nameSpaceWithHomeId, lastEnd);
@@ -287,12 +277,8 @@ class Tibberconnect extends utils.Adapter {
 					val: DateTime.fromISO(lastEnd).toISO(),
 					ack: true,
 				}),
-				this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Highs", {
-					val: JSON.stringify(result.highs),
-					ack: true,
-				}),
-				this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Lows", {
-					val: JSON.stringify(result.lows),
+				this.setStateAsync(nameSpaceWithHomeId + ".Calculations.Feedback", {
+					val: JSON.stringify(result),
 					ack: true,
 				}),
 			]);
