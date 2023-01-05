@@ -40,8 +40,6 @@ class TibberAPICaller extends tibberHelper_1.TibberHelper {
                 this.checkAndSetValue(this.getStatePrefix(this.currentHomeId, "Calculations", "Feedback"), "", "Feedback of calculation"),
                 this.checkAndSetValue(this.getStatePrefix(this.currentHomeId, "Calculations", "LastEnd"), "", "The last end for calculation"),
                 this.checkAndSetValueBooleanAsButton(this.getStatePrefix(this.currentHomeId, "Calculations", "GetExtrem"), false, "Start calculate high and low"),
-                this.checkAndSetValue(this.getStatePrefix(this.currentHomeId, "Calculations", "Highs"), "", "calculated Highs"),
-                this.checkAndSetValue(this.getStatePrefix(this.currentHomeId, "Calculations", "Lows"), "", "calculated Lows"),
             ]);
             this.fetchAddress("Address", currentHome.address);
             this.fetchLegalEntity("Owner", currentHome.owner);

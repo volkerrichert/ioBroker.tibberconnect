@@ -116,16 +116,6 @@ export class TibberAPICaller extends TibberHelper {
 					false,
 					"Start calculate high and low",
 				),
-				this.checkAndSetValue(
-					this.getStatePrefix(this.currentHomeId, "Calculations", "Highs"),
-					"",
-					"calculated Highs",
-				),
-				this.checkAndSetValue(
-					this.getStatePrefix(this.currentHomeId, "Calculations", "Lows"),
-					"",
-					"calculated Lows",
-				),
 			]);
 
 			this.fetchAddress("Address", currentHome.address);
