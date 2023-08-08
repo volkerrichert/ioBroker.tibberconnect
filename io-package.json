@@ -42,8 +42,6 @@
 			"0.0.10": {
 				"en": "fixed tibber pulse data stream",
 				"de": "Daten des Tibber Pulse werden wieder ausgelesen."
-				"de": "Automatische Neuverbindung im 5 Sek Interval (Pulse), wenn Verbindung unterbrochen wurde",
-				"en": "try automatically reconnecting websocket connection (pulse data) in 5s interval"
 			},
 			"0.0.11": {
 				"en": "add \"calculate best time\" based on the work from Magnus8513",
